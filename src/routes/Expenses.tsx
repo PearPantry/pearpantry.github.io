@@ -1,6 +1,9 @@
+import MenuBar from "../components/MenuBar";
+
+
 function Expenses() {
     return (
-        <h1>Expenses</h1>
+        <MenuBar/>
     )
 }
 
