@@ -6,7 +6,7 @@ import {
   Typography,
   Button,
 } from "@mui/material";
-import HomeIcon from '@mui/icons-material/Home';
+import HomeIcon from "@mui/icons-material/Home";
 import { NavLink, useNavigate } from "react-router-dom";
 import { signOut } from "firebase/auth";
 import { auth } from "../scripts/firebase";
@@ -19,6 +19,7 @@ function MenuBar() {
   const logout = async () => {
     try {
       await signOut(auth);
+      navigate("/login");
     } catch (err) {
       console.error(err);
     }
