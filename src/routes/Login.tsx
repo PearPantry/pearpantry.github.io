@@ -1,21 +1,9 @@
 import { auth, googleProvider } from "../scripts/firebase";
-import { createUserWithEmailAndPassword, signInWithPopup, signOut } from 'firebase/auth';
-import { useState } from "react";
+import {  signInWithPopup, signOut } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
 
 export const Login = () => {
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
     const navigate = useNavigate();
-
-    const signIn = async () => {
-        try {
-            await createUserWithEmailAndPassword(auth, email, password);
-            navigate("/");
-        } catch (err) {
-            console.error(err);
-        }
-    };
 
     const signInWithGoogle = async () => {
         try {
