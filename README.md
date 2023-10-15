@@ -1,4 +1,6 @@
-How to use: visit pearpantry.github.io
+# PearPantry
+
+How to use: visit [pearpantry.github.io](https://pearpantry.github.io/)
 
 
 ## Inspiration
