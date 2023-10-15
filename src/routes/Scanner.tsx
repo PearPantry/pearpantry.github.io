@@ -2,24 +2,29 @@ function Scanner() {
   return (
     <>
       <h1>Scanner</h1>
-      <input type="file" accept="image/*" capture="environment" onChange={processFile}/>
+      <input
+        type="file"
+        accept="image/*"
+        capture="environment"
+        onChange={processFile}
+      />
     </>
   );
 }
 
 const convertBase64 = (file: File) => {
-    return new Promise((resolve, reject) => {
-        const fileReader = new FileReader();
-        fileReader.readAsDataURL(file);
+  return new Promise((resolve, reject) => {
+    const fileReader = new FileReader();
+    fileReader.readAsDataURL(file);
 
-        fileReader.onload = () => {
-            resolve(fileReader.result);
-        };
+    fileReader.onload = () => {
+      resolve(fileReader.result);
+    };
 
-        fileReader.onerror = (error) => {
-            reject(error);
-        };
-    });
+    fileReader.onerror = (error) => {
+      reject(error);
+    };
+  });
 };
 
 const processFile = async (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -27,28 +32,30 @@ const processFile = async (e: React.ChangeEvent<HTMLInputElement>) => {
 
   // Convert to base64 string
   const base64 = await convertBase64(file);
-  
-  const fetch = require("node-fetch");
 
-  const url = "https://api.veryfi.com/api/v8/partner/documents";
+  const form = new FormData();
+  form.append("refresh", "false");
+  form.append("incognito", "false");
+  form.append("extractTime", "false");
+  form.append(
+    "file",
+    "data:image/jpeg;name=" + file.name + ";base64," + base64
+  );
+  form.append("extractLineItems", "true");
+
   const options = {
     method: "POST",
     headers: {
-      "Content-Type": "application/json",
-      Accept: "application/json",
-      "CLIENT-ID": "vrfLGiSkJwtltbOEIyP9xVXeuTFhGlMsfj019NI",
-      AUTHORIZATION: "apikey pearpantry:9fe50c75817cd5382d98d54c96442b00",
+      accept: "application/json",
+      apikey: "e103af406b4311eea8f313266e4aecd5",
     },
-    body: '{"file_url":"https://veryfi-testing-public.s3.us-west-2.amazonaws.com/receipt.jpg"}',
+    body: form,
   };
 
-  try {
-    const response = await fetch(url, options);
-    const data = await response.json();
-    console.log(data);
-  } catch (error) {
-    console.error(error);
-  }
+  fetch("https://api.taggun.io/api/receipt/v1/verbose/file", options)
+    .then((response) => response.json())
+    .then((response) => console.log(response))
+    .catch((err) => console.error(err));
 };
 
 export default Scanner;
