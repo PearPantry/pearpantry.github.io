@@ -1,14 +1,29 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import reactLogo from '../assets/react.svg'
 import viteLogo from '/vite.svg'
 import '../styles/Home.css'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
+import { Login } from './Login'
+import { auth } from '../scripts/firebase'
 
 function Home() {
   const [count, setCount] = useState(0)
+  const navigate = useNavigate();
+  
+  // Check if user is logged in and redirect to Auth route if not
+  useEffect(() => {
+    return auth.onAuthStateChanged((user) => {
+      if (!user) {
+        navigate('login')
+      }
+    });
+  }, [navigate])
 
   return (
     <>
+      <div>
+        <Login />
+      </div>
       <div>
         <a href="https://vitejs.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
