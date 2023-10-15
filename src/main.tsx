@@ -5,6 +5,7 @@ import './styles/index.css'
 import { RouterProvider, createHashRouter } from 'react-router-dom'
 import Pantry from './routes/Pantry.tsx'
 import Expenses from './routes/Expenses.tsx'
+import { Login } from './routes/Login.tsx'
 
 const router = createHashRouter([
   {
@@ -18,6 +19,10 @@ const router = createHashRouter([
   {
     path: 'expenses',
     element: <Expenses />,
+  },
+  {
+    path: 'login',
+    element: <Login />,
   }
 ])
 
