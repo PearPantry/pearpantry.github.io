@@ -8,11 +8,21 @@ import {
 } from "@mui/material";
 import AdbIcon from "@mui/icons-material/Adb";
 import { NavLink, useNavigate } from "react-router-dom";
+import { signOut } from "firebase/auth";
+import { auth } from "../scripts/firebase";
 
 const pages = ["Pantry", "Scanner", "Expenses"];
 
 function MenuBar() {
   const navigate = useNavigate();
+
+  const logout = async () => {
+    try {
+      await signOut(auth);
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
   return (
     <AppBar position="static">
@@ -40,13 +50,16 @@ function MenuBar() {
             {pages.map((page) => (
               <Button
                 key={page}
-                onClick={() => navigate(page.toLowerCase())}
+                onClick={() => navigate("/" + page.toLowerCase())}
                 sx={{ my: 2, color: "white", display: "block" }}
               >
                 {page}
               </Button>
             ))}
           </Box>
+          <Button onClick={logout} color="inherit">
+            Logout
+          </Button>
           <AdbIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
           <Typography
             variant="h5"

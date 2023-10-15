@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Typography } from "@mui/material";
 
 function Greeting() {
   const [greeting, setGreeting] = useState("");
@@ -15,11 +16,7 @@ function Greeting() {
     }
   }, []);
 
-  return (
-    <div className="Greeting">
-      <h1>{greeting}</h1>
-    </div>
-  );
+  return <Typography variant="h2">{greeting}</Typography>;
 }
 
 export default Greeting;

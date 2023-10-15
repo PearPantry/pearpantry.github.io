@@ -21,7 +21,9 @@ function Home() {
   return (
     <>
       <MenuBar />
+      <br />
       <Greeting />
+      <br />
       <HorizontalStack />
     </>
   );
