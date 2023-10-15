@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { getDocs, collection, doc, writeBatch} from 'firebase/firestore';
 import { db } from "../scripts/firebase";
+import axios from 'axios';
+import NutritionWidget from '../NutritionWidget.tsx';
 
 function Pantry() {
 
@@ -105,7 +107,10 @@ function Pantry() {
                 accept=".txt"
                 onChange={handleFileUpload}
             />
-
+             <ul>
+            <h1> Random Nutritional Information</h1>
+            <NutritionWidget />
+            </ul>
             {pantryList.map((items: any) => (
                 <div key={items.id}>
                     <h1>{items.name}</h1>
