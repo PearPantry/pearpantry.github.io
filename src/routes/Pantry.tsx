@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 import { getDocs, collection, doc, writeBatch} from 'firebase/firestore';
 import { db } from "../scripts/firebase";
+import MenuBar from "../components/MenuBar";
+
+
 
 function Pantry() {
-
     const[pantryList, setPantryList] = useState<{ id: string }[]>([]);
 
     const pantrysCollectionRef = collection(db, "Pantry");
@@ -91,7 +93,9 @@ function Pantry() {
 
     return (
         <div>
+            <MenuBar/>
             <h1>Pantry</h1>
+            <h2> </h2>
             <input
                 type="file"
                 accept=".txt"
@@ -100,8 +104,8 @@ function Pantry() {
 
             {pantryList.map((items: any) => (
                 <div key={items.id}>
-                    <h1>{items.name}</h1>
-                    <p>Cost: {items.totalPrice}</p>
+                    <h3>{items.name.toLowerCase()}</h3>
+                    {/* <p>Cost: {items.totalPrice}</p> */}
                 </div>
             ))}
         </div>

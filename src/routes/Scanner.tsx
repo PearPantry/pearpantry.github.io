@@ -11,6 +11,7 @@ import MenuBar from "../components/MenuBar";
 import { useNavigate } from "react-router-dom";
 
 function Scanner() {
+  
   const navigate = useNavigate();
   const [isToggleOn, setIsToggleOn] = useState(false);
   const items = [

@@ -40,7 +40,7 @@ function MenuBar() {
             {pages.map((page) => (
               <Button
                 key={page}
-                onClick={() => navigate(page.toLowerCase())}
+                onClick={() => navigate("/"+ page.toLowerCase())}
                 sx={{ my: 2, color: "white", display: "block" }}
               >
                 {page}
