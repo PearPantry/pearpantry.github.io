@@ -1,7 +1,18 @@
+import { useNavigate } from "react-router-dom";
+
 function Scanner() {
-    return (
-        <h1>Scanner</h1>
-    )
+  const navigate = useNavigate();
+  return (
+    <>
+      <h1>Scanner</h1>
+      <input
+        type="file"
+        accept="image/*"
+        capture="environment"
+        onChange={() => navigate("/pantry")}
+      />
+    </>
+  );
 }
 
 export default Scanner;
