@@ -1,11 +1,9 @@
 import { useEffect, useState } from "react";
-import { getDocs, collection, doc, writeBatch } from 'firebase/firestore';
+import { getDocs, collection, doc, writeBatch } from "firebase/firestore";
 import { db } from "../scripts/firebase";
-import NutritionWidget from '../NutritionWidget.tsx';
+import NutritionWidget from "../NutritionWidget.tsx";
 import MenuBar from "../components/MenuBar";
 import { Typography } from "@mui/material";
-
-
 
 function Pantry() {
   const [pantryList, setPantryList] = useState<{ id: string }[]>([]);
@@ -14,7 +12,6 @@ function Pantry() {
 
   useEffect(() => {
     const getPantryList = async () => {
-
       try {
         const data = await getDocs(pantrysCollectionRef);
         const filteredData = data.docs.map((doc) => ({
@@ -29,7 +26,6 @@ function Pantry() {
     };
 
     getPantryList();
-
   }, []);
 
   const handleFileUpload = async (event: any) => {
@@ -40,12 +36,14 @@ function Pantry() {
     }
 
     try {
-      const fileContent = await readFile(file) as any;
+      const fileContent = (await readFile(file)) as any;
       const jsonData = JSON.parse(fileContent);
 
       if (jsonData.entities) {
         // Add jsonData.entities to Firestore
-        await addProductLineItemsToFirestore(jsonData.entities.productLineItems);
+        await addProductLineItemsToFirestore(
+          jsonData.entities.productLineItems
+        );
       }
     } catch (error) {
       console.error("Error handling the file upload:", error);
@@ -69,7 +67,7 @@ function Pantry() {
   };
 
   const addProductLineItemsToFirestore = async (productLineItems: any) => {
-    const pantryCollectionRef = collection(db, 'Pantry');
+    const pantryCollectionRef = collection(db, "Pantry");
     const batch = writeBatch(db);
 
     productLineItems.forEach((item: any) => {
@@ -94,28 +92,40 @@ function Pantry() {
 
     try {
       await batch.commit(); // Commit the batch to Firestore
-      console.log('Product line items added to Firestore successfully');
+      console.log("Product line items added to Firestore successfully");
     } catch (error) {
-      console.error('Error adding product line items to Firestore:', error);
+      console.error("Error adding product line items to Firestore:", error);
     }
   };
-
 
   return (
     <div>
       <MenuBar />
-      <br/>
+      <br />
       <Typography variant="h2">Your Pantry</Typography>
-      <br/>
+      <br />
       <input type="file" accept=".txt" onChange={handleFileUpload} />
 
-      <div style={{ display: 'flex' }}>
+      <div style={{ display: "flex" }}>
         <div style={{ flex: 1 }}>
-          <h2>Ingredients</h2>
-          <ul>
+          <Typography variant="h4">Ingredients</Typography>
+          <ul style={{ listStyle: "none" }}>
             {pantryList.map((items: any) => (
               <li key={items.id}>
-                <h3>{items.name}</h3>
+                {items.name.toLowerCase() == "spinach" && (
+                  <a
+                    href="https://www.udistrictfoodbank.org/"
+                    style={{ color: "red" }}
+                  >
+                    <h3>Spinach (expiring soon)</h3>
+                  </a>
+                )}
+                {items.name.toLowerCase() != "spinach" && (
+                  <h3>
+                    {items.name.charAt(0).toUpperCase() +
+                      items.name.slice(1).toLowerCase()}
+                  </h3>
+                )}
                 <p>Cost: {items.totalPrice}</p>
               </li>
             ))}
@@ -123,15 +133,14 @@ function Pantry() {
         </div>
 
         <div style={{ flex: 1 }}>
-          <h2>Nutritional Information: Blueberries</h2>
+          <Typography variant="h4">
+            Nutritional Information: Blueberries
+          </Typography>
           <NutritionWidget />
         </div>
       </div>
     </div>
-
-
   );
-
 }
 
 export default Pantry;

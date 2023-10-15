@@ -27,7 +27,6 @@ const NutritionWidget = () => {
 
   return (
     <div>
-      <h2>Nutritional Data for Blueberries (per serving)</h2>
       <ul>
         <p>Calories: {nutritionData.calories}</p>
         <p>Fat: {nutritionData.fat}</p>
