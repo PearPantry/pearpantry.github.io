@@ -104,7 +104,6 @@ function Pantry() {
       <br />
       <Typography variant="h2">Your Pantry</Typography>
       <br />
-      <input type="file" accept=".txt" onChange={handleFileUpload} />
 
       <div style={{ display: "flex" }}>
         <div style={{ flex: 1 }}>
@@ -139,6 +138,10 @@ function Pantry() {
           <NutritionWidget />
         </div>
       </div>
+
+      <br />
+
+      <input type="file" accept=".txt" onChange={handleFileUpload} />
     </div>
   );
 }
