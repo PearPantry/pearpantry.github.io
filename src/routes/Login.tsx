@@ -1,8 +1,9 @@
 import { auth, googleProvider } from "../scripts/firebase";
-import { signInWithPopup, signOut } from "firebase/auth";
+import { signInWithPopup } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
-import { setDoc, doc } from 'firebase/firestore';
+import { setDoc, doc } from "firebase/firestore";
 import { db } from "../scripts/firebase";
+import { Button, Typography } from "@mui/material";
 
 export const Login = () => {
   const navigate = useNavigate();
@@ -10,8 +11,8 @@ export const Login = () => {
   const signInWithGoogle = async () => {
     try {
       const result = await signInWithPopup(auth, googleProvider);
-      const user = result.user
-      const userRef = doc(db, 'Users', user.uid);
+      const user = result.user;
+      const userRef = doc(db, "Users", user.uid);
       await setDoc(userRef, {
         debts: {
           debt1: { amount: 0, name: "uAD4jBZlf1gHtxzJL3g5ctyIuNy2" },
@@ -19,34 +20,20 @@ export const Login = () => {
           debt3: { amount: 0, name: "yUjhdtDYF7QN81YmznPaPlaGmgn2" },
         },
       });
-      
+
       navigate("/");
     } catch (err) {
       console.error(err);
     }
   };
 
-  const logout = async () => {
-    try {
-      await signOut(auth);
-    } catch (err) {
-      console.error(err);
-    }
-  };
   return (
-    <div>
-      {/* <input 
-            placeholder="Email..."
-            onChange={(e) => setEmail(e.target.value)}
-            />
-            <input placeholder="Password..."
-            onChange={(e) => setPassword(e.target.value)}
-            />
-            <button onClick={signIn}> Sign In</button> */}
+    <>
+      <Typography variant="h1">Login</Typography>
 
-      <button onClick={signInWithGoogle}> Sign in with Google</button>
+      <br />
 
-      <button onClick={logout}> Logout </button>
-    </div>
+      <Button onClick={signInWithGoogle} variant="contained"> Sign in with Google</Button>
+    </>
   );
 };

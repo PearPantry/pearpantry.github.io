@@ -9,9 +9,9 @@ import {
 } from "@mui/material";
 import MenuBar from "../components/MenuBar";
 import { useNavigate } from "react-router-dom";
+import Typography from "@mui/material/Typography";
 
 function Scanner() {
-  
   const navigate = useNavigate();
   const [isToggleOn, setIsToggleOn] = useState(false);
   const items = [
@@ -25,7 +25,10 @@ function Scanner() {
     <>
       <MenuBar />
 
-      <h1>Scanner</h1>
+      <Typography variant="h2">Scanner</Typography>
+
+      <br />
+
       <input
         type="file"
         accept="image/*"
