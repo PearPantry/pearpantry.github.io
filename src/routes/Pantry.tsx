@@ -100,24 +100,31 @@ function Pantry() {
             
 
     return (
-        <div>
-            <h1>Pantry</h1>
-            <input
-                type="file"
-                accept=".txt"
-                onChange={handleFileUpload}
-            />
-             <ul>
-            <h1> Random Nutritional Information</h1>
-            <NutritionWidget />
-            </ul>
-            {pantryList.map((items: any) => (
-                <div key={items.id}>
-                    <h1>{items.name}</h1>
-                    <p>Cost: {items.totalPrice}</p>
-                </div>
-            ))}
-        </div>
+<div>
+  <h1>Your Pantry</h1>
+  <input type="file" accept=".txt" onChange={handleFileUpload} />
+
+  <div style={{ display: 'flex' }}>
+    <div style={{ flex: 1 }}>
+      <h2>Ingredients</h2>
+      <ul>
+        {pantryList.map((items: any) => (
+          <li key={items.id}>
+            <h3>{items.name}</h3>
+            <p>Cost: {items.totalPrice}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    <div style={{ flex: 1 }}>
+      <h2>Nutritional Information: Blueberries</h2>
+      <NutritionWidget />
+    </div>
+  </div>
+</div>
+
+
     );
     
 }

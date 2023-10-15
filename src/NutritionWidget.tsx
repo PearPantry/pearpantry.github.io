@@ -37,17 +37,6 @@ const NutritionWidget = () => {
 <p>Cholesterol: {nutritionData.cholesterol}</p>
 <p>Sodium: {nutritionData.sodium}</p>
 <p>Protein: {nutritionData.protein}</p>
-<p>Vitamin B12: {nutritionData.nutrients[9].amount} {nutritionData.nutrients[9].unit}</p>
-<p>Selenium: {nutritionData.nutrients[10].amount} {nutritionData.nutrients[10].unit}</p>
-<p>Phosphorus: {nutritionData.nutrients[11].amount} {nutritionData.nutrients[11].unit}</p>
-<p>Vitamin B6: {nutritionData.nutrients[12].amount} {nutritionData.nutrients[12].unit}</p>
-<p>Vitamin B3: {nutritionData.nutrients[13].amount} {nutritionData.nutrients[13].unit}</p>
-<p>Magnesium: {nutritionData.nutrients[14].amount} {nutritionData.nutrients[14].unit}</p>
-<p>Vitamin B5: {nutritionData.nutrients[15].amount} {nutritionData.nutrients[15].unit}</p>
-<p>Potassium: {nutritionData.nutrients[16].amount} {nutritionData.nutrients[16].unit}</p>
-
-
-
       </ul>
     </div>
   );
