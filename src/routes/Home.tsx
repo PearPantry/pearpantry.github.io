@@ -1,12 +1,10 @@
-import { useEffect } from 'react'
-import '../styles/Home.css'
-import Greeting from '../components/Greeting';
-import MenuBar from '../components/MenuBar'
-import { Login } from './Login'
-import { auth } from '../scripts/firebase'
-import { useNavigate } from 'react-router-dom'
-import HorizontalStack from '../components/HorizontalStack';
-
+import { useEffect } from "react";
+import "../styles/Home.css";
+import Greeting from "../components/Greeting";
+import MenuBar from "../components/MenuBar";
+import { auth } from "../scripts/firebase";
+import { useNavigate } from "react-router-dom";
+import HorizontalStack from "../components/HorizontalStack";
 
 function Home() {
   const navigate = useNavigate();
@@ -22,17 +20,9 @@ function Home() {
 
   return (
     <>
-
-        
-        <MenuBar />
-        <Greeting/>
-        <HorizontalStack />
-
-
-      <div>
-        <Login />
-      </div>
-
+      <MenuBar />
+      <Greeting />
+      <HorizontalStack />
     </>
   );
 }
