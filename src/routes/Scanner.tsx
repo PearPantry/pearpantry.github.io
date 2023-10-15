@@ -12,22 +12,22 @@ function Scanner() {
   );
 }
 
-const convertBase64 = (file: File) => {
-  return new Promise((resolve, reject) => {
-    const fileReader = new FileReader();
-    fileReader.readAsDataURL(file);
+// const convertBase64 = (file: File) => {
+//   return new Promise((resolve, reject) => {
+//     const fileReader = new FileReader();
+//     fileReader.readAsDataURL(file);
 
-    fileReader.onload = () => {
-      resolve(fileReader.result);
-    };
+//     fileReader.onload = () => {
+//       resolve(fileReader.result);
+//     };
 
-    fileReader.onerror = (error) => {
-      reject(error);
-    };
-  });
-};
+//     fileReader.onerror = (error) => {
+//       reject(error);
+//     };
+//   });
+// };
 
-const processFile = async (e: React.ChangeEvent<HTMLInputElement>) => {
+const processFile = async (_: React.ChangeEvent<HTMLInputElement>) => {
   //   const file = e.target.files![0];
 
   // Convert to base64 string
