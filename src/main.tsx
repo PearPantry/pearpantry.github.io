@@ -6,6 +6,7 @@ import Pantry from "./routes/Pantry.tsx";
 import Expenses from "./routes/Expenses.tsx";
 import { Login } from "./routes/Login.tsx";
 import Scanner from "./routes/Scanner.tsx";
+import { createTheme, ThemeOptions, ThemeProvider } from "@mui/material/styles";
 
 const router = createHashRouter([
   {
@@ -30,8 +31,22 @@ const router = createHashRouter([
   },
 ]);
 
+const theme = createTheme({
+  palette: {
+    mode: "light",
+    primary: {
+      main: "#939462",
+    },
+    secondary: {
+      main: "#cf7c3f",
+    },
+  },
+});
+
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <ThemeProvider theme={theme}>
+      <RouterProvider router={router} />
+    </ThemeProvider>
   </React.StrictMode>
 );
