@@ -1,37 +1,33 @@
-import { useState, useEffect } from 'react'
-import '../styles/Home.css'
-import Greeting from '../components/Greeting';
-import MenuBar from '../components/MenuBar'
-import { Login } from './Login'
-import { auth } from '../scripts/firebase'
-import { NavLink, useNavigate } from 'react-router-dom'
-
-
-
+import { useState, useEffect } from "react";
+import "../styles/Home.css";
+import Greeting from "../components/Greeting";
+import MenuBar from "../components/MenuBar";
+import { Login } from "./Login";
+import { auth } from "../scripts/firebase";
+import { NavLink, useNavigate } from "react-router-dom";
 
 function Home() {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0);
   const navigate = useNavigate();
-  
+
   // Check if user is logged in and redirect to Auth route if not
   useEffect(() => {
     return auth.onAuthStateChanged((user) => {
       if (!user) {
-        navigate('login')
+        navigate("login");
       }
     });
-  }, [navigate])
+  }, [navigate]);
 
   return (
     <>
-        
-        <MenuBar />
-        <Greeting/>
+      <MenuBar />
+      <Greeting />
 
       <div>
         <Login />
       </div>
-      
+
       <h1>Vite + React</h1>
       <div className="card">
         <button onClick={() => setCount((count) => count + 1)}>
@@ -51,7 +47,7 @@ function Home() {
         <h1>Expenses</h1>
       </NavLink>
     </>
-  )
+  );
 }
 
-export default Home
+export default Home;
