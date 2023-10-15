@@ -31,11 +31,15 @@ function Home() {
   return (
     <>
       <MenuBar />
+      <br />
       <Greeting />
+      <br />
       <HorizontalStack />
 
-      <br/>
-      <Button onClick={logout} variant="contained">Logout</Button>
+      <br />
+      <Button onClick={logout} variant="contained">
+        Logout
+      </Button>
     </>
   );
 }
