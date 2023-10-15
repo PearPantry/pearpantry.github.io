@@ -3,6 +3,7 @@ import { getDocs, collection, doc, writeBatch } from 'firebase/firestore';
 import { db } from "../scripts/firebase";
 import NutritionWidget from '../NutritionWidget.tsx';
 import MenuBar from "../components/MenuBar";
+import { Typography } from "@mui/material";
 
 
 
@@ -103,7 +104,9 @@ function Pantry() {
   return (
     <div>
       <MenuBar />
-      <h1>Your Pantry</h1>
+      <br/>
+      <Typography variant="h2">Your Pantry</Typography>
+      <br/>
       <input type="file" accept=".txt" onChange={handleFileUpload} />
 
       <div style={{ display: 'flex' }}>
