@@ -36,7 +36,7 @@ function Pantry() {
         }
       
         try {
-          const fileContent = await readFile(file);
+          const fileContent = await readFile(file) as any;
           const jsonData = JSON.parse(fileContent);
       
           if (jsonData.entities) {
@@ -52,7 +52,7 @@ function Pantry() {
         return new Promise((resolve, reject) => {
           const reader = new FileReader();
       
-          reader.onload = (event) => {
+          reader.onload = (event: any) => {
             resolve(event.target.result);
           };
       
