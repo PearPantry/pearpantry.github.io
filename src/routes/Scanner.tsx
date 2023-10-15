@@ -25,6 +25,8 @@ function Scanner() {
     <>
       <MenuBar />
 
+      <br />
+      
       <Typography variant="h2">Scanner</Typography>
 
       <br />
