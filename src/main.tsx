@@ -5,6 +5,7 @@ import { RouterProvider, createHashRouter } from "react-router-dom";
 import Pantry from "./routes/Pantry.tsx";
 import Expenses from "./routes/Expenses.tsx";
 import { Login } from "./routes/Login.tsx";
+import Scanner from "./routes/Scanner.tsx";
 
 const router = createHashRouter([
   {
@@ -14,6 +15,10 @@ const router = createHashRouter([
   {
     path: "pantry",
     element: <Pantry />,
+  },
+  {
+    path: "scanner",
+    element: <Scanner />,
   },
   {
     path: "expenses",
