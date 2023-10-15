@@ -5,6 +5,8 @@ import MenuBar from '../components/MenuBar'
 import { Login } from './Login'
 import { auth } from '../scripts/firebase'
 import { NavLink, useNavigate } from 'react-router-dom'
+import HorizontalStack from '../components/HorizontalStack';
+
 
 
 
@@ -27,12 +29,13 @@ function Home() {
         
         <MenuBar />
         <Greeting/>
+        <HorizontalStack />
 
       <div>
         <Login />
       </div>
       
-      <h1>Vite + React</h1>
+      {/* <h1>Vite + React</h1>
       <div className="card">
         <button onClick={() => setCount((count) => count + 1)}>
           count is {count}
@@ -49,7 +52,7 @@ function Home() {
       </NavLink>
       <NavLink to={"expenses"}>
         <h1>Expenses</h1>
-      </NavLink>
+      </NavLink> */}
     </>
   )
 }
