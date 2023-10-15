@@ -5,6 +5,8 @@ import MenuBar from "../components/MenuBar";
 import { auth } from "../scripts/firebase";
 import { useNavigate } from "react-router-dom";
 import HorizontalStack from "../components/HorizontalStack";
+import { signOut } from "firebase/auth";
+import { Button } from "@mui/material";
 
 function Home() {
   const navigate = useNavigate();
@@ -18,11 +20,26 @@ function Home() {
     });
   }, [navigate]);
 
+  const logout = async () => {
+    try {
+      await signOut(auth);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
   return (
     <>
       <MenuBar />
+      <br />
       <Greeting />
+      <br />
       <HorizontalStack />
+
+      <br />
+      <Button onClick={logout} variant="contained">
+        Logout
+      </Button>
     </>
   );
 }
