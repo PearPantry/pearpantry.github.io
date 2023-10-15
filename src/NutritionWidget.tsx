@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
 const NutritionWidget = () => {
-  const [nutritionData, setNutritionData] = useState({});
+  const [nutritionData, setNutritionData]: any = useState({});
   const apiKey = 'a431318bd32245edb1d3ddebf242bb44';
 
   useEffect(() => {
@@ -11,13 +11,14 @@ const NutritionWidget = () => {
 
       .then((response) => {
         console.log(response);
-        
-        return response.json()})
-      
+
+        return response.json()
+      })
+
       .then((data) => {
         console.log(data);
         setNutritionData(data);
-        
+
       })
       .catch((error) => {
         console.error('Error fetching nutrition data:', error);
@@ -28,15 +29,15 @@ const NutritionWidget = () => {
     <div>
       <h2>Nutritional Data for Blueberries (per serving)</h2>
       <ul>
-<p>Calories: {nutritionData.calories}</p>
-<p>Fat: {nutritionData.fat}</p>
-<p>Saturated Fat: {nutritionData.saturatedFat}</p>
-<p>Carbohydrates: {nutritionData.carbs}</p>
-<p>Net Carbohydrates: {nutritionData.netCarbohydrates}</p>
-<p>Sugar: {nutritionData.sugar}</p>
-<p>Cholesterol: {nutritionData.cholesterol}</p>
-<p>Sodium: {nutritionData.sodium}</p>
-<p>Protein: {nutritionData.protein}</p>
+        <p>Calories: {nutritionData.calories}</p>
+        <p>Fat: {nutritionData.fat}</p>
+        <p>Saturated Fat: {nutritionData.saturatedFat}</p>
+        <p>Carbohydrates: {nutritionData.carbs}</p>
+        <p>Net Carbohydrates: {nutritionData.netCarbohydrates}</p>
+        <p>Sugar: {nutritionData.sugar}</p>
+        <p>Cholesterol: {nutritionData.cholesterol}</p>
+        <p>Sodium: {nutritionData.sodium}</p>
+        <p>Protein: {nutritionData.protein}</p>
       </ul>
     </div>
   );
