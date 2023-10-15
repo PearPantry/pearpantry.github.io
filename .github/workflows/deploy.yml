@@ -1,0 +1,47 @@
+#file: noinspection YAMLSchemaValidation
+name: Deploy to GitHub Pages
+
+# Controls when the workflow will run
+on:
+  push:
+    branches:
+      - main
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Allow one concurrent deployment
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+jobs:
+  # Build the website
+  build:
+    uses: ./.github/workflows/build.yml
+    with:
+      upload-artifact: true
+
+  # Deploy the website after building
+  deploy:
+    needs: build
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 🛠 Setup Pages
+        uses: actions/configure-pages@v3
+
+      - name: 🚀 Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v2
