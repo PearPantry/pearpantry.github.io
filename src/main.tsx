@@ -6,7 +6,7 @@ import Pantry from "./routes/Pantry.tsx";
 import Expenses from "./routes/Expenses.tsx";
 import { Login } from "./routes/Login.tsx";
 import Scanner from "./routes/Scanner.tsx";
-import { createTheme, ThemeOptions, ThemeProvider } from "@mui/material/styles";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 const router = createHashRouter([
   {
