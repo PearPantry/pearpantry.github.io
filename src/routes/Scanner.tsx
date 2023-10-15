@@ -28,10 +28,10 @@ const convertBase64 = (file: File) => {
 };
 
 const processFile = async (e: React.ChangeEvent<HTMLInputElement>) => {
-  const file = e.target.files![0];
+  //   const file = e.target.files![0];
 
   // Convert to base64 string
-  const base64 = await convertBase64(file);
+  //   const base64 = await convertBase64(file);
 
   const data = new FormData();
   data.append("refresh", "false");
