@@ -1,9 +1,10 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
+import reactLogo from '../assets/react.svg'
 import viteLogo from '/vite.svg'
-import './App.css'
+import '../styles/Home.css'
+import { NavLink } from 'react-router-dom'
 
-function App() {
+function Home() {
   const [count, setCount] = useState(0)
 
   return (
@@ -28,8 +29,14 @@ function App() {
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
+      <NavLink to={"pantry"}>
+        <h1>Pantry</h1>
+      </NavLink>
+      <NavLink to={"expenses"}>
+        <h1>Expenses</h1>
+      </NavLink>
     </>
   )
 }
 
-export default App
+export default Home
