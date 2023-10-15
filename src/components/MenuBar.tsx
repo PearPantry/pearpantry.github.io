@@ -6,7 +6,7 @@ import {
   Typography,
   Button,
 } from "@mui/material";
-import AdbIcon from "@mui/icons-material/Adb";
+import HomeIcon from '@mui/icons-material/Home';
 import { NavLink, useNavigate } from "react-router-dom";
 import { signOut } from "firebase/auth";
 import { auth } from "../scripts/firebase";
@@ -28,7 +28,7 @@ function MenuBar() {
     <AppBar position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
+          <HomeIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
           <Typography
             variant="h6"
             noWrap
@@ -60,7 +60,7 @@ function MenuBar() {
           <Button onClick={logout} color="inherit">
             Logout
           </Button>
-          <AdbIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
+          <HomeIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
           <Typography
             variant="h5"
             noWrap
@@ -77,7 +77,7 @@ function MenuBar() {
               textDecoration: "none",
             }}
           >
-            HI
+            PearPantry
           </Typography>
         </Toolbar>
       </Container>
