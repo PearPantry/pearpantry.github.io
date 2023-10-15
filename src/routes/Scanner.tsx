@@ -52,8 +52,9 @@ const processFile = async (_: React.ChangeEvent<HTMLInputElement>) => {
     }
   });
 
-  xhr.open("POST", "https://api.taggun.io/api/receipt/v1/verbose/file");
+  xhr.open("POST", "https://corsproxy.io/?https://api.taggun.io/api/receipt/v1/verbose/file");
   xhr.setRequestHeader("accept", "application/json");
+  xhr.setRequestHeader("Access-Control-Allow-Origin", "https://pearpantry.github.io");
   xhr.setRequestHeader("apikey", "e103af406b4311eea8f313266e4aecd5");
 
   xhr.send(data);
