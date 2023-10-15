@@ -68,12 +68,20 @@ function Pantry() {
         const pantryCollectionRef = collection(db, 'Pantry');
         const batch = writeBatch(db);
       
-        productLineItems.forEach((item: any) => {
-          const { name, totalPrice } = item.data;
-          const documentData = {
-            name: name.text,
-            totalPrice: totalPrice.data,
-          };
+        productLineItems.forEach((item) => {
+            const { name, totalPrice, owner, users } = item;
+        
+            // Extract the text property from 'name' and 'owner' objects
+            const itemName = name.text;
+            const itemOwner = owner.text;
+        
+            // Create the document data for Firestore
+            const documentData = {
+              name: itemName,
+              totalPrice: totalPrice.data,
+              owner: itemOwner,
+              users: users,
+            };
       
           const newDocumentRef = doc(pantryCollectionRef);
       
